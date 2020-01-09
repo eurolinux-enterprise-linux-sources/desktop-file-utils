@@ -4,7 +4,7 @@
 Summary: Utilities for manipulating .desktop files
 Name: desktop-file-utils
 Version: 0.23
-Release: 1%{?dist}
+Release: 2%{?dist}
 URL: https://www.freedesktop.org/software/desktop-file-utils
 Source0: https://www.freedesktop.org/software/desktop-file-utils/releases/%{name}-%{version}.tar.xz
 Source1: desktop-entry-mode-init.el
@@ -12,6 +12,9 @@ Source1: desktop-entry-mode-init.el
 # upstream patch by David Faure
 # https://cgit.freedesktop.org/xdg/desktop-file-utils/commit/?id=5b88c95c45e91781aed441c446210c6979350c3f
 Patch0: desktop-file-utils-0.23-add-pantheon.patch
+# Add 'font' as a valid media type (#1564650, fdo#105785)
+# patch from Matthias Clasen
+Patch1: desktop-file-utils-0.23-font-media.patch
 License: GPLv2+
 Group: Development/Tools
 
@@ -33,8 +36,7 @@ fixing it up in the process.
 
 
 %prep
-%setup -q
-%patch0 -p1 -b .add-pantheon
+%autosetup -p1
 
 %build
 %configure
@@ -60,6 +62,10 @@ touch $RPM_BUILD_ROOT%{_emacs_sitestartdir}/desktop-entry-mode-init.elc
 %{_emacs_sitelispdir}/%{pkg}
 
 %changelog
+* Fri Mar 01 2019 Ray Strode <rstrode@redhat.com> - 0.23-2
+- Add font as valid media type
+  Resolves: #1649233
+
 * Thu Nov 24 2016 Kalev Lember <klember@redhat.com> - 0.23-1
 - Update to 0.23
 - Resolves: #1386844
