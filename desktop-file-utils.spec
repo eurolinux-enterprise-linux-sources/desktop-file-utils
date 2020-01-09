@@ -3,11 +3,15 @@
 
 Summary: Utilities for manipulating .desktop files
 Name: desktop-file-utils
-Version: 0.22
+Version: 0.23
 Release: 1%{?dist}
-URL: http://www.freedesktop.org/software/desktop-file-utils
-Source0: http://www.freedesktop.org/software/desktop-file-utils/releases/%{name}-%{version}.tar.xz
+URL: https://www.freedesktop.org/software/desktop-file-utils
+Source0: https://www.freedesktop.org/software/desktop-file-utils/releases/%{name}-%{version}.tar.xz
 Source1: desktop-entry-mode-init.el
+# Add Pantheon to the list of desktop environments (#1333550, fdo#97385)
+# upstream patch by David Faure
+# https://cgit.freedesktop.org/xdg/desktop-file-utils/commit/?id=5b88c95c45e91781aed441c446210c6979350c3f
+Patch0: desktop-file-utils-0.23-add-pantheon.patch
 License: GPLv2+
 Group: Development/Tools
 
@@ -30,6 +34,7 @@ fixing it up in the process.
 
 %prep
 %setup -q
+%patch0 -p1 -b .add-pantheon
 
 %build
 %configure
@@ -55,6 +60,10 @@ touch $RPM_BUILD_ROOT%{_emacs_sitestartdir}/desktop-entry-mode-init.elc
 %{_emacs_sitelispdir}/%{pkg}
 
 %changelog
+* Thu Nov 24 2016 Kalev Lember <klember@redhat.com> - 0.23-1
+- Update to 0.23
+- Resolves: #1386844
+
 * Thu Apr 30 2015 Ray Strode <rstrode@redhat.com> 0.22-1
 - Update to 0.22
   Resolves: #1217519
