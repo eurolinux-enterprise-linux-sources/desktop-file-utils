@@ -4,7 +4,7 @@
 Summary: Utilities for manipulating .desktop files
 Name: desktop-file-utils
 Version: 0.21
-Release: 2%{?dist}
+Release: 4%{?dist}
 URL: http://www.freedesktop.org/software/desktop-file-utils
 Source0: http://www.freedesktop.org/software/desktop-file-utils/releases/%{name}-%{version}.tar.xz
 Source1: desktop-entry-mode-init.el
@@ -55,6 +55,12 @@ touch $RPM_BUILD_ROOT%{_emacs_sitestartdir}/desktop-entry-mode-init.elc
 %{_emacs_sitelispdir}/%{pkg}
 
 %changelog
+* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 0.21-4
+- Mass rebuild 2014-01-24
+
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 0.21-3
+- Mass rebuild 2013-12-27
+
 * Wed Feb 13 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.21-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
 
