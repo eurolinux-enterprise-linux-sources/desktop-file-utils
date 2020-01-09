@@ -3,8 +3,8 @@
 
 Summary: Utilities for manipulating .desktop files
 Name: desktop-file-utils
-Version: 0.21
-Release: 4%{?dist}
+Version: 0.22
+Release: 1%{?dist}
 URL: http://www.freedesktop.org/software/desktop-file-utils
 Source0: http://www.freedesktop.org/software/desktop-file-utils/releases/%{name}-%{version}.tar.xz
 Source1: desktop-entry-mode-init.el
@@ -55,6 +55,10 @@ touch $RPM_BUILD_ROOT%{_emacs_sitestartdir}/desktop-entry-mode-init.elc
 %{_emacs_sitelispdir}/%{pkg}
 
 %changelog
+* Thu Apr 30 2015 Ray Strode <rstrode@redhat.com> 0.22-1
+- Update to 0.22
+  Resolves: #1217519
+
 * Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 0.21-4
 - Mass rebuild 2014-01-24
 
